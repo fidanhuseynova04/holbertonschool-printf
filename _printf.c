@@ -90,7 +90,7 @@ int print_decimal(unsigned int a, int s)
 	while (n > 0)
 	{
 		mod = n % 10;
-		eded[index] = mod + 48;
+		eded[index] = mod + 0;
 		n = n / 10;
 		index++;
 	}
@@ -98,7 +98,7 @@ int print_decimal(unsigned int a, int s)
 	index = index - 1;
 	while (index >= 0)
 	{
-		write(1, "eded[index]", 1);
+		write(1, &eded[index], 1);
 		index--;
 	}
 	return (a);
