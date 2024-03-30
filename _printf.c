@@ -68,7 +68,7 @@ int print_char(unsigned int a, char c)
  */
 int print_decimal(unsigned int a, int s)
 {
-	int mod = 0, b  = 0;
+	int mod = 0, index = 0;
 	unsigned int n;
 	char eded[11];
 
@@ -90,16 +90,16 @@ int print_decimal(unsigned int a, int s)
 	while (n > 0)
 	{
 		mod = n % 10;
-		eded[b] = mod + 48;
+		eded[index] = mod + 48;
 		n = n / 10;
-		b++;
+		index++;
 	}
-	a = a + b;
-	b = b - 1;
-	while (b >= 0)
+	a = a + index;
+	index = index - 1;
+	while (index >= 0)
 	{
-		write(1, &eded[b], 1);
-		b--;
+		write(1, &eded[index], 1);
+		index--;
 	}
 	return (a);
 }
