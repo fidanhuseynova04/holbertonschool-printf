@@ -66,42 +66,36 @@ int print_char(unsigned int a, char c)
  * @s: number string
  * Return: count of numbers
  */
-int print_decimal(unsigned int a, int s)
+int print_decimal(int value)
 {
-	int mod = 0, index = 0;
+	int i, j;
+	char buffer[1000000];
+	int printed = 0;
 	unsigned int n;
-	char eded[11];
 
-	if (s < 0)
+	if (value < 0)
 	{
-		write(1, "-", 1);
-		a++;
-		n = -1 * s;
+		_putchar('-');
+		printed++;
+		n = -value;
 	}
 	else
 	{
-		n = s;
+		n = value;
 	}
-	if (n == 0)
+
+	i = 0;
+
+	do {
+		buffer[i++] = '0' + (n % 10);
+		n /= 10;
+		printed++;
+	} while (n > 0);
+	for (j = i - 1; j >= 0; j--)
 	{
-		write(1, "48", 1);
-		return (a + 1);
+		_putchar(buffer[j]);
 	}
-	while (n > 0)
-	{
-		mod = n % 10;
-		eded[index] = mod + 48;
-		n = n / 10;
-		index++;
-	}
-	a = a + index;
-	index = index - 1;
-	while (index >= 0)
-	{
-		write(1, &eded[index], 1);
-		index--;
-	}
-	return (a);
+	return (printed);
 }
 /**
  * _printf - print string
