@@ -63,13 +63,13 @@ int print_char(unsigned int a, char c)
 /**
  * print_decimal - decimal print
  * @a: count of numbers
- * @s: string of number
+ * @s: number string
  * Return: Always 0.
  */
 int print_decimal(unsigned int a, int s)
 {
 	int mod = 0, index = 0;
-	char num[11];
+	char eded[11];
 	unsigned int n;
 
 	if (s < 0)
