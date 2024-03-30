@@ -115,9 +115,9 @@ int _printf(const char *format, ...)
 
 	if (!format)
 		exit(98);
-	if (*format == '%' && *(format + 1) == '\0')
+	if (*format == '%' && *(format + 1) == 0)
 		exit(98);
-	va_start(args, format);
+	va_start(ptr, format);
 	while (*(format + j))
 	{
 		switch (*(format + j))
@@ -126,33 +126,26 @@ int _printf(const char *format, ...)
 				switch (*(format + j + 1))
 				{
 					case '%':
-						write(1, "%", 1);
-						a++;
-						j +=2;
-						breakl;
+						a++, j += 2;
+						break;
 					case 'c':
-						a = print_char(r, (char)va_arg(ptr, int));
-						j += 2;
+						a = print_char((char)va_arg(ptr, int), r), j += 2;
 						break;
 					case 's':
-						a = print_string(r, va_arg(ptr, char *));
-						j += 2;
+						a = print_string(va_arg(ptr, char *), r), j += 2;
 						break;
 					case 'd':
 					case 'i':
-						a += print_decimal(va_arg(ptr, int));
-						j += 2;
+						a += print_decimal(va_arg(ptr, int)), j += 2;
 						break;
 					default:
 						write(1, (format + j), 1);
-						a++;
-						j++;
+						a++, j++;
 				}
 				break;
 			default:
 				write(1, (format + j), 1);
-				a++;
-				j++;
+				a++, j++;
 		}
 	}
 	va_end(ptr);
