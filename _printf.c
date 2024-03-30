@@ -90,7 +90,7 @@ int print_decimal(unsigned int a, int s)
 	while (n > 0)
 	{
 		mod = n % 10;
-		eded[index] = mod + 48;
+		eded[index] = mod + '48';
 		n = n / 10;
 		index++;
 	}
