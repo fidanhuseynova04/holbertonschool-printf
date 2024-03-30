@@ -92,7 +92,7 @@ int print_decimal(int value)
 	} while (n > 0);
 	for (j = i - 1; j >= 0; j--)
 	{
-		write(1, buffer[j], 1);
+		write(1, &buffer[j], 1);
 	}
 	return (printed);
 }
