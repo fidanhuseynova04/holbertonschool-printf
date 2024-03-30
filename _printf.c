@@ -62,23 +62,43 @@ int print_char(unsigned int a, char c)
 }
 /**
  * print_decimal - decimal print
- * @deyer: int
+ * @a: count of numbers
+ * @s: string of number
  * Return: Always 0.
  */
-int print_decimal(int deyer)
+int print_decimal(unsigned int a, int s)
 {
-	int printed = 0;
+	int mod = 0, index = 0;
+	char num[11];
 	unsigned int n;
-	char buffer[1000000];
 
-	if (deyer < 0)
+	if (s < 0)
 	{
 		write(1, "-", 1);
-		printed++;
-		n = -deyer;
+		a++;
+		n = -1 * s;
 	}
 	else
 	{
-		n = deyer;
+		n = s;
 	}
-
+	if (n == 0)
+	{
+		write(1, "0", 1);
+		return (a + 1);
+	}
+	while (n > 0)
+	{
+		mod = n % 10;
+		num[index] = mod + 48;
+		n = n / 10;
+		index++;
+	}
+	a = a + index;
+	index = index - 1;
+	while (index >= 0)
+	{
+		write(num[index]);
+	}
+	return (a);
+}
