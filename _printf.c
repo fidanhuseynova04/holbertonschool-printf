@@ -120,34 +120,30 @@ int _printf(const char *format, ...)
 	va_start(ptr, format);
 	while (*(format + j))
 	{
-		switch (*(format + j))
+		if (*(format + j) == '%' && *(format + j + 1) == '%')
 		{
-			case '%':
-				switch (*(format + j + 1))
-				{
-					case '%':
-						a++, j += 2;
-						break;
-					case 'c':
-						a = print_char((char)va_arg(ptr, int), r), j += 2;
-						break;
-					case 's':
-						a = print_string(va_arg(ptr, char *), r), j += 2;
-						break;
-					case 'd':
-					case 'i':
-						a += print_decimal(va_arg(ptr, int)), j += 2;
-						break;
-					default:
-						write(1, (format + j), 1);
-						a++, j++;
-				}
-				break;
-			default:
-				write(1, (format + j), 1);
-				a++, j++;
+			write(1, "%", 1);
+			a++, j += 2;
+		}
+		else if (*(format + j) == '%' && *(format + j + 1) == 'c')
+		{
+			a = print_char(r, (char)va_arg(ptr, int)), j += 2;
+		}
+		else if (*(format + j) == '%' && *(format + j + 1) == 's')
+		{
+			a = print_string(r, va_arg(ptr, char *)), j += 2;
+		}
+		else if (*(format + j) == '%' && (*(format + j + 1) == 'd' ||
+		*(format + j + 1) == 'i'))
+		{
+			a += print_decimal(va_arg(ptr, int)), j += 2;
+		}
+		else
+		{
+			a++;
+		       	write(1, *(format + j), 1);
+		       	j++;
 		}
 	}
-	va_end(ptr);
 	return (a);
 }
