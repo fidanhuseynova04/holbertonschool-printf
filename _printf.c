@@ -139,7 +139,7 @@ int _printf(const char *format, ...)
 		else if (*(format + j) == '%' && (*(format + j + 1) == 'd' ||
 		*(format + j + 1) == 'i'))
 		{
-			a += print_decimal(va_arg(ptr, int));
+			a += print_decimal(a, va_arg(ptr, int));
 			j += 2;
 		}
 		else
