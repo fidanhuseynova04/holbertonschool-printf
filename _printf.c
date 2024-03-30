@@ -99,7 +99,7 @@ int print_decimal(unsigned int a, int s)
 	while (index >= 0)
 	{
 		write(1, &eded[index], 1);
-		index--;
+		--index;
 	}
 	return (a);
 }
