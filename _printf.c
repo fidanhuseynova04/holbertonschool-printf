@@ -6,7 +6,7 @@
 #include "main.h"
 /**
  * print_string - print string
- * @s: char
+ * @s: string
  * @a: leng
  * Return: letter count
  */
