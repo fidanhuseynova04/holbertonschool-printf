@@ -127,11 +127,11 @@ int _printf(const char *format, ...)
 		}
 		else if (*(format + j) == '%' && *(format + j + 1) == 'c')
 		{
-			a = print_char(r, (char)va_arg(ptr, int)), j += 2;
+			a = print_char(a, (char)va_arg(ptr, int)), j += 2;
 		}
 		else if (*(format + j) == '%' && *(format + j + 1) == 's')
 		{
-			a = print_string(r, va_arg(ptr, char *)), j += 2;
+			a = print_string(a, va_arg(ptr, char *)), j += 2;
 		}
 		else if (*(format + j) == '%' && (*(format + j + 1) == 'd' ||
 		*(format + j + 1) == 'i'))
