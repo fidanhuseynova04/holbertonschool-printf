@@ -133,7 +133,7 @@ int _printf(const char *format, ...)
 		}
 		else if (*(format + j) == '%' && *(format + j + 1) == 's')
 		{
-			a = print_string(a, va_arg(ptr, char *)); 
+			a = print_string(a, va_arg(ptr, char *));
 			j += 2;
 		}
 		else if (*(format + j) == '%' && (*(format + j + 1) == 'd' ||
@@ -145,8 +145,8 @@ int _printf(const char *format, ...)
 		else
 		{
 			a++;
-		       	write(1, (format + j), 1);
-		       	j++;
+		write(1, (format + j), 1);
+		j++;
 		}
 	}
 	return (a);
