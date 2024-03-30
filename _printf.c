@@ -98,7 +98,7 @@ int print_decimal(unsigned int a, int s)
 	index = index - 1;
 	while (index >= 0)
 	{
-		write(num[index]);
+		write(1, "num[index]", 1);
 	}
 	return (a);
 }
