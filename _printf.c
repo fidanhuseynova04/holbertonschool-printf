@@ -62,9 +62,8 @@ int print_char(unsigned int a, char c)
 }
 /**
  * print_decimal - for printing numbers
- * @a: count of numbers
- * @s: number string
- * Return: count of numbers
+ * @value: operand
+ * Return: Always 0.
  */
 int print_decimal(int value)
 {
