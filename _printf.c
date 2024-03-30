@@ -74,7 +74,7 @@ int print_decimal(int value)
 
 	if (value < 0)
 	{
-		_putchar('-');
+		write(1, "-", 1);
 		printed++;
 		n = -value;
 	}
@@ -92,7 +92,7 @@ int print_decimal(int value)
 	} while (n > 0);
 	for (j = i - 1; j >= 0; j--)
 	{
-		_putchar(buffer[j]);
+		write(1, buffer[j], 1)
 	}
 	return (printed);
 }
@@ -132,7 +132,7 @@ int _printf(const char *format, ...)
 		else if (*(format + j) == '%' && (*(format + j + 1) == 'd' ||
 		*(format + j + 1) == 'i'))
 		{
-			a += print_decimal(a, va_arg(ptr, int));
+			a += print_decimal(va_arg(ptr, int));
 			j += 2;
 		}
 		else
