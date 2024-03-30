@@ -123,25 +123,29 @@ int _printf(const char *format, ...)
 		if (*(format + j) == '%' && *(format + j + 1) == '%')
 		{
 			write(1, "%", 1);
-			a++, j += 2;
+			a++;
+			j += 2;
 		}
 		else if (*(format + j) == '%' && *(format + j + 1) == 'c')
 		{
-			a = print_char(a, (char)va_arg(ptr, int)), j += 2;
+			a = print_char(a, (char)va_arg(ptr, int));
+			j += 2;
 		}
 		else if (*(format + j) == '%' && *(format + j + 1) == 's')
 		{
-			a = print_string(a, va_arg(ptr, char *)), j += 2;
+			a = print_string(a, va_arg(ptr, char *)); 
+			j += 2;
 		}
 		else if (*(format + j) == '%' && (*(format + j + 1) == 'd' ||
 		*(format + j + 1) == 'i'))
 		{
-			a += print_decimal(va_arg(ptr, int)), j += 2;
+			a += print_decimal(va_arg(ptr, int));
+			j += 2;
 		}
 		else
 		{
 			a++;
-		       	write(1, *(format + j), 1);
+		       	write(1, (format + j), 1);
 		       	j++;
 		}
 	}
