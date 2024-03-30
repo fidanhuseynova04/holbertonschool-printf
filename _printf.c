@@ -69,8 +69,8 @@ int print_char(unsigned int a, char c)
 int print_decimal(unsigned int a, int s)
 {
 	int mod = 0, index = 0;
-	char eded[11];
 	unsigned int n;
+	char num[11];
 
 	if (s < 0)
 	{
