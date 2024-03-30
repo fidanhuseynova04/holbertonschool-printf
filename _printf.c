@@ -110,36 +110,51 @@ int print_decimal(unsigned int a, int s)
  */
 int _printf(const char *format, ...)
 {
-	va_list args;
-	int printed_chars = 0;
+	va_list ptr;
+	unsigned int j = 0, a = 0;
 
+	if (!format)
+		exit(98);
+	if (*format == '%' && *(format + 1) == '\0')
+		exit(98);
 	va_start(args, format);
-	while (*format)
+	while (*(format + j))
 	{
-		if (*format == '%')
+		switch (*(format + j))
 		{
-			format++;
-			switch (*format)
-			{
-				case 'c':
-					printed_chars += print_char((char)va_arg(args, int));
-					break;
-				case 's':
-					printed_chars += print_string(va_arg(args, char *));
-					break;
-				case '%':
-					printed_chars += print_char('%');
-					break;
-				default:
-					break;
-			}
+			case '%':
+				switch (*(format + j + 1))
+				{
+					case '%':
+						write(1, "%", 1);
+						a++;
+						j +=2;
+						breakl;
+					case 'c':
+						a = print_char(r, (char)va_arg(ptr, int));
+						j += 2;
+						break;
+					case 's':
+						a = print_string(r, va_arg(ptr, char *));
+						j += 2;
+						break;
+					case 'd':
+					case 'i':
+						a += print_decimal(va_arg(ptr, int));
+						j += 2;
+						break;
+					default:
+						write(1, (format + j), 1);
+						a++;
+						j++;
+				}
+				break;
+			default:
+				write(1, (format + j), 1);
+				a++;
+				j++;
 		}
-		else
-		{
-			printed_chars += print_char(*format);
-		}
-		format++;
 	}
-	va_end(args);
-	return (printed_chars);
+	va_end(ptr);
+	return (a);
 }
