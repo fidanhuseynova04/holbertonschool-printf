@@ -64,7 +64,7 @@ int print_char(unsigned int a, char c)
  * print_decimal - for printing numbers
  * @a: count of numbers
  * @s: number string
- * Return: Always 0.
+ * Return: count of numbers
  */
 int print_decimal(unsigned int a, int s)
 {
