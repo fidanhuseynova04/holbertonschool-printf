@@ -61,7 +61,7 @@ int print_char(unsigned int a, char c)
 	return (a);
 }
 /**
- * print_decimal - decimal print
+ * print_decimal - for printing numbers
  * @a: count of numbers
  * @s: number string
  * Return: Always 0.
@@ -70,7 +70,7 @@ int print_decimal(unsigned int a, int s)
 {
 	int mod = 0, index = 0;
 	unsigned int n;
-	char eded[11];
+	char num[11];
 
 	if (s < 0)
 	{
@@ -84,13 +84,13 @@ int print_decimal(unsigned int a, int s)
 	}
 	if (n == 0)
 	{
-		write(1, "0", 1);
+		write(1, "48", 1);
 		return (a + 1);
 	}
 	while (n > 0)
 	{
 		mod = n % 10;
-		eded[index] = mod + 48;
+		num[index] = mod + 48;
 		n = n / 10;
 		index++;
 	}
